@@ -61,7 +61,21 @@ it("should increase quality by 3 when sell_in is 5 days or less for Backstage pa
     update_quality();
     expect(items[0].sell_in).toEqual(-1);
     expect(items[0].quality).toEqual(0);
+  });
+  
+  it("should degrade quality twice as fast for Conjured items", function() {
+    items = [ new Item("Conjured Mana Cake", 3, 6) ];
+    update_quality();
+    expect(items[0].sell_in).toEqual(2);
+    expect(items[0].quality).toEqual(4);
     
   });
 
+  it("should degrade quality four times as fast for Conjured items after sell_in date has passed", function() {
+    items = [ new Item("Conjured Mana Cake", 0, 6) ];
+    update_quality();
+    expect(items[0].sell_in).toEqual(-1);
+    expect(items[0].quality).toEqual(2);
+    
+  });
 });
