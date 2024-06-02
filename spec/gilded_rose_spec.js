@@ -56,4 +56,12 @@ it("should increase quality by 3 when sell_in is 5 days or less for Backstage pa
     
   });
 
+  it("should drop quality to 0 after the concert for Backstage passes", function() {
+    items = [ new Item("Backstage passes to a TAFKAL80ETC concert", 0, 20) ];
+    update_quality();
+    expect(items[0].sell_in).toEqual(-1);
+    expect(items[0].quality).toEqual(0);
+    
+  });
+
 });
