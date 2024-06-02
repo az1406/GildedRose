@@ -40,7 +40,13 @@ it("should not change quality or sell_in for Sulfuras", function() {
   
 });
 
-
+it("should increase quality by 2 when sell_in is 10 days or less for Backstage passes", function() {
+  items = [ new Item("Backstage passes to a TAFKAL80ETC concert", 10, 20) ];
+  update_quality();
+  expect(items[0].sell_in).toEqual(9);
+  expect(items[0].quality).toEqual(22);
+  
+});
 
 
 
